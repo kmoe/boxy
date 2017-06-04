@@ -1,0 +1,22 @@
+{
+  "name": "boxy",
+  "version": "0.0.1",
+  "description": "senpai read my description!!~",
+  "main": "index.js",
+  "scripts": {
+    "test": "nonono"
+  },
+  "author": "yolo-chan",
+  "license": "MIT",
+  "dependencies": {
+    "async": "^2.4.1",
+    "jsonfile": "^3.0.0",
+    "parse-torrent": "^5.8.3",
+    "pify": "^3.0.0",
+    "ramda": "^0.24.1",
+    "sprintf-js": "^1.1.1",
+    "telegraf": "^3.7.3",
+    "webtorrent": "^0.98.18",
+    "winston": "^2.3.1"
+  }
+}

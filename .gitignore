@@ -1,0 +1,6 @@
+node_modules
+sample-uris
+allowed-users
+torrent-subscribers.json*
+*.log
+.env

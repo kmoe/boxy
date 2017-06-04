@@ -1,0 +1,9 @@
+:3141 {
+      basicauth / boxy boxy
+      root /home/boxy/files
+      browse
+      errors
+      log
+      gzip
+      limits 10kb
+}
