@@ -16,7 +16,7 @@ const generateRandomWords = require('./generate-random-words');
 const DL_YES = 'dl_yes';
 const DL_NO = 'dl_no';
 const SAMPLE_TORRENT_URI = 'https://archive.org/download/thelivesofthetwe06393gut/thelivesofthetwe06393gut_archive.torrent'; // Suetonius Twelve Caesars Chapter VIII - Otho
-const { BOXY_TORRENT_SUBSCRIBERS_FILENAME, BOXY_ALLOWED_USERS_FILENAME, BOXY_TELEGRAM_API_TOKEN, TORRENT_DOWNLOAD_PATH } = process.env;
+const { BOXY_TORRENT_SUBSCRIBERS_FILENAME, BOXY_ALLOWED_USERS_FILENAME, BOXY_TELEGRAM_API_TOKEN, TORRENT_DOWNLOAD_PATH, URL_LINK } = process.env;
 const BOXY_EXPECTED_NUMBER_OF_USERS = 2;
 
 let DIALOGUE_STRINGS = {};
@@ -210,9 +210,8 @@ function addTorrent(parsedTorrent, userId) {
         if (subscribers) {
           Object.keys(subscribers).forEach((subscriber) => {
             if (subscribers[subscriber]) {
-              bot.telegram.sendMessage(subscriber, getDialogueString("torrent_download_complete", [torrent.name]));
-              removeTorrentSubscription(torrent.infoHash, subscriber);
-              // TODO link to HTTP
+              bot.telegram.sendMessage(subscriber, getDialogueString("torrent_download_complete", [torrent.name, URL_LINK]));
+            //  removeTorrentSubscription(torrent.infoHash, subscriber);
             }
           });
         }
