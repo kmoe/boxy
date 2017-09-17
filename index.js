@@ -75,28 +75,22 @@ const dlMenu = Markup
 bot.use(Telegraf.mount('message', (ctx, next) => {
   const msg = ctx.message.text;
   const thisUser = ctx.message.from.id.toString();
-  const unrecognisedMessagesFromThisUser = unrecognisedMessageCounts[thisUser];
-
-  if (unrecognisedMessagesFromThisUser === 1) {
-    winston.info(`first unrecognised message from ${thisUser}`);
-    return ctx.reply(getDialogueString("first_reply"));
-  }
-
-  if (unrecognisedMessagesFromThisUser === 2) {
-    winston.info(`second unrecognised message from ${thisUser}`);
-    return ctx.reply(getDialogueString("help_short"));
-  }
-
-  if (unrecognisedMessagesFromThisUser > 2) {
-    unrecognisedMessageCounts[ctx.message.from.id.toString()] = 0;
-    winston.info(`got ${unrecognisedMessagesFromThisUser} non-torrent messages from ${thisUser}`);
-    return ctx.reply(getDialogueString("help_long"));
-  }
 
   // short-circuit if the message looks nothing like a torrent link
   if (!msg.includes(':')) {
     unrecognisedMessageCounts[thisUser]++;
     winston.info(`assuming message ${msg} is not a torrent link`);
+    if (unrecognisedMessageCounts[thisUser] === 1) {
+      winston.info(`first unrecognised message from ${thisUser}`);
+      return ctx.reply(getDialogueString('first_reply'));
+    } else if (unrecognisedMessageCounts[thisUser] === 2) {
+      winston.info(`second unrecognised message from ${thisUser}`);
+      return ctx.reply(getDialogueString('help_short'));
+    } else if (unrecognisedMessageCounts[thisUser] > 2) {
+      unrecognisedMessageCounts[ctx.message.from.id.toString()] = 0;
+      winston.info(`got ${unrecognisedMessageCounts[thisUser]} non-torrent messages from ${thisUser}`);
+      return ctx.reply(getDialogueString('help_long'));
+    }
     return ctx.reply(getDialogueString("default_reply"));
   }
 
