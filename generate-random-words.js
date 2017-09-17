@@ -164,7 +164,7 @@ const CAT_BREEDS = [
 ];
 
 function pickRandomWord(list) {
-  return list[Math.floor(Math.random * list.length)];
+  return list[Math.floor(Math.random() * list.length)];
 }
 
 function generateRandomWords(numberOfRandomWords) {
