@@ -3,7 +3,7 @@
   "parsed_torrent_name": "this looks like a torrent called %s! would you like to download~?",
   "torrent_download_confirmed": "hai~! i'll download this torrent for you!",
   "torrent_download_declined": "okay, send me links any time, senpai!",
-  "torrent_download_complete": "your torrent %s is done! go to %s to find it ~#^^",
+  "torrent_download_complete": "your torrent %s is done! go to %s to find it ~#^^ the username is %s and the password is %s",
   "first_reply": "ohai~!",
   "default_reply": "senpai~~? i don't understand...",
   "could_not_parse_torrent": "sorry, i couldn't find a torrent for %s. please check that you're sending me a link to a torrent file or magnet uri! ^^",
