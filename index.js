@@ -1,6 +1,4 @@
-const R = require('ramda');
 const fs = require('fs');
-const readline = require('readline');
 const async = require('async');
 const jsonfile = require('jsonfile');
 const pify = require('pify');
@@ -27,6 +25,8 @@ winston.add(winston.transports.File, {
   humanReadableUnhandledException: true,
   exitOnError: false,
 });
+
+winston.info('init');
 
 const torrentClient = new WebTorrent();
 torrentClient.on('error', winston.error);
@@ -56,7 +56,7 @@ bot.use((ctx, next) => {
   const start = new Date();
   return next().then(() => {
     const ms = new Date() - start;
-    winston.verbose('response time %sms', ms);
+    winston.info('response time %sms', ms);
   });
 });
 

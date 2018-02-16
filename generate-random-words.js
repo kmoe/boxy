@@ -163,18 +163,39 @@ const CAT_BREEDS = [
   'tom',
 ];
 
-function pickRandomWord(list) {
-  return list[Math.floor(Math.random() * list.length)];
+function sanitiseString(str) {
+  return str.replace(/[^a-z]/g, '');
+}
+
+function pickRandomWord(list) { // returns string
+  return sanitiseString(list[Math.floor(Math.random() * list.length)]);
+}
+
+function pickRandomWords(list, numberOfRandomWords) { // returns array
+  return
 }
 
 function generateRandomWords(numberOfRandomWords) {
-  if (numberOfRandomWords === 1) {
-    return pickRandomWord(CAT_BREEDS);
-  } else if (numberOfRandomWords === 2) {
-    return pickRandomWord(CAT_BREEDS) + '-' + pickRandomWord(INTEL_CODENAMES);
-  } else {
-    return pickRandomWord(CAT_BREEDS) + '-' + pickRandomWord(INTEL_CODENAMES) + `-${pickRandomWord(MICROSOFT_CODENAMES)}`.repeat(numberOfRandomWords - 2);
+  console.log('numberOfRandomWords', numberOfRandomWords);
+
+  if (isNaN(parseInt(numberOfRandomWords, 10))) {
+    return 'UNK';
   }
+
+  switch (numberOfRandomWords) {
+    case 0:
+      return '';
+    case 1:
+      return pickRandomWord(CAT_BREEDS);
+    case 2:
+      return pickRandomWord(CAT_BREEDS) + '-' + pickRandomWord(INTEL_CODENAMES);
+    default:
+      return pickRandomWord(CAT_BREEDS) + '-' + pickRandomWord(INTEL_CODENAMES) + `-${pickRandomWord(MICROSOFT_CODENAMES)}`.repeat(numberOfRandomWords - 2);
+  }
+}
+
+for (let i = 0; i < 5; i++) {
+  console.log(generateRandomWords(i));
 }
 
 module.exports = generateRandomWords;

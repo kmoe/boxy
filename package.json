@@ -4,19 +4,19 @@
   "description": "senpai read my description!!~",
   "main": "index.js",
   "scripts": {
-    "test": "nonono"
+    "test": "nonono",
+    "start": "nohup node index.js > stdout.log 2> stderr.log &"
   },
   "author": "yolo-chan",
   "license": "MIT",
   "dependencies": {
-    "async": "^2.4.1",
-    "jsonfile": "^3.0.0",
+    "async": "^2.6.0",
+    "jsonfile": "^3.0.1",
     "parse-torrent": "^5.8.3",
     "pify": "^3.0.0",
-    "ramda": "^0.24.1",
     "sprintf-js": "^1.1.1",
-    "telegraf": "^3.7.3",
-    "webtorrent": "^0.98.18",
-    "winston": "^2.3.1"
+    "telegraf": "^3.18.0",
+    "webtorrent": "^0.98.21",
+    "winston": "^2.4.0"
   }
 }
