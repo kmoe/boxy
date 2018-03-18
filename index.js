@@ -8,6 +8,7 @@ const WebTorrent = require('webtorrent');
 const parseTorrent = require('parse-torrent');
 const Telegraf = require('telegraf');
 const { Extra, memorySession, reply, Markup } = Telegraf;
+const R = require('ramda');
 
 const generateRandomWords = require('./generate-random-words');
 
